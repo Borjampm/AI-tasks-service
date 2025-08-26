@@ -1,0 +1,11 @@
+[project]
+name = "AI-task-service"
+version = "0.1.0"
+description = "A place to define and run AI tasks"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "logfire>=4.3.5",
+    "pydantic-ai[logfire]>=0.7.4",
+]
