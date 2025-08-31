@@ -8,6 +8,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "fastapi[standard]>=0.116.1",
     "logfire>=4.3.5",
+    "psycopg2-binary>=2.9.10",
     "pydantic-ai[logfire]>=0.7.4",
     "uvicorn>=0.35.0",
 ]
