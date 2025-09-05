@@ -52,13 +52,6 @@ def transform_to_tables_schema(rows):
         tables_schema[row[0]][row[1]] = row[2]
     return tables_schema
 
-# Run raw SQL
-# cur.execute(SQL_get_tables_with_schema)
-# rows = cur.fetchall()
-
-# tables_schema = transform_to_tables_schema(rows)
-# print(tables_schema)
-
 # ------------ MODEL ----------------------
 
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')

@@ -210,3 +210,4 @@ __marimo__/
 # added by me
 inputs/*
 outputs/*
+.logfire

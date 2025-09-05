@@ -31,6 +31,7 @@ ___
 </lines>
 <dashed-text>
 Wrap text with ~~
+</dashed-text>
 </special-characters>
 <exceptions>
 If there are stars in the margins, DO NOT INCLUDE THEM
