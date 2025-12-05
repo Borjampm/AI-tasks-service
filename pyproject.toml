@@ -1,14 +1,7 @@
 [project]
-name = "AI-task-service"
+name = "ai-tasks-service"
 version = "0.1.0"
-description = "A place to define and run AI tasks"
+description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "dotenv>=0.9.9",
-    "fastapi[standard]>=0.116.1",
-    "logfire>=4.3.5",
-    "psycopg2-binary>=2.9.10",
-    "pydantic-ai[logfire]>=0.7.4",
-    "uvicorn>=0.35.0",
-]
+requires-python = ">=3.13"
+dependencies = []
