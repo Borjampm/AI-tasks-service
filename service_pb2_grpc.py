@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import recommendations_pb2 as recommendations__pb2
+import service_pb2 as service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -18,14 +18,14 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in recommendations_pb2_grpc.py depends on'
+        + ' but the generated code in service_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class RecommendationsStub(object):
+class MyServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -34,43 +34,43 @@ class RecommendationsStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Recommend = channel.unary_unary(
-                '/Recommendations/Recommend',
-                request_serializer=recommendations__pb2.RecommendationRequest.SerializeToString,
-                response_deserializer=recommendations__pb2.RecommendationResponse.FromString,
+        self.DoSomething = channel.unary_unary(
+                '/MyService/DoSomething',
+                request_serializer=service__pb2.Request.SerializeToString,
+                response_deserializer=service__pb2.Response.FromString,
                 _registered_method=True)
 
 
-class RecommendationsServicer(object):
+class MyServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Recommend(self, request, context):
+    def DoSomething(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_RecommendationsServicer_to_server(servicer, server):
+def add_MyServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Recommend': grpc.unary_unary_rpc_method_handler(
-                    servicer.Recommend,
-                    request_deserializer=recommendations__pb2.RecommendationRequest.FromString,
-                    response_serializer=recommendations__pb2.RecommendationResponse.SerializeToString,
+            'DoSomething': grpc.unary_unary_rpc_method_handler(
+                    servicer.DoSomething,
+                    request_deserializer=service__pb2.Request.FromString,
+                    response_serializer=service__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'Recommendations', rpc_method_handlers)
+            'MyService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('Recommendations', rpc_method_handlers)
+    server.add_registered_method_handlers('MyService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class Recommendations(object):
+class MyService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Recommend(request,
+    def DoSomething(request,
             target,
             options=(),
             channel_credentials=None,
@@ -83,9 +83,9 @@ class Recommendations(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/Recommendations/Recommend',
-            recommendations__pb2.RecommendationRequest.SerializeToString,
-            recommendations__pb2.RecommendationResponse.FromString,
+            '/MyService/DoSomething',
+            service__pb2.Request.SerializeToString,
+            service__pb2.Response.FromString,
             options,
             channel_credentials,
             insecure,
