@@ -24,17 +24,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\"\x17\n\x07Request\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"\x1a\n\x08Response\x12\x0e\n\x06result\x18\x01 \x01(\t21\n\tMyService\x12$\n\x0b\x44oSomething\x12\x08.Request\x1a\t.Response\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\"\x1c\n\x08Question\x12\x10\n\x08question\x18\x01 \x01(\t\"*\n\x06\x41nswer\x12\x0e\n\x06\x61nswer\x18\x01 \x01(\t\x12\x10\n\x08sequence\x18\x02 \x01(\x05\x32)\n\tAIService\x12\x1c\n\x02QA\x12\t.Question\x1a\x07.Answer\"\x00\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'service_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_REQUEST']._serialized_start=17
-  _globals['_REQUEST']._serialized_end=40
-  _globals['_RESPONSE']._serialized_start=42
-  _globals['_RESPONSE']._serialized_end=68
-  _globals['_MYSERVICE']._serialized_start=70
-  _globals['_MYSERVICE']._serialized_end=119
+  _globals['_QUESTION']._serialized_start=17
+  _globals['_QUESTION']._serialized_end=45
+  _globals['_ANSWER']._serialized_start=47
+  _globals['_ANSWER']._serialized_end=89
+  _globals['_AISERVICE']._serialized_start=91
+  _globals['_AISERVICE']._serialized_end=132
 # @@protoc_insertion_point(module_scope)

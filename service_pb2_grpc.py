@@ -25,7 +25,7 @@ if _version_not_supported:
     )
 
 
-class MyServiceStub(object):
+class AIServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -34,43 +34,43 @@ class MyServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.DoSomething = channel.unary_unary(
-                '/MyService/DoSomething',
-                request_serializer=service__pb2.Request.SerializeToString,
-                response_deserializer=service__pb2.Response.FromString,
+        self.QA = channel.unary_stream(
+                '/AIService/QA',
+                request_serializer=service__pb2.Question.SerializeToString,
+                response_deserializer=service__pb2.Answer.FromString,
                 _registered_method=True)
 
 
-class MyServiceServicer(object):
+class AIServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def DoSomething(self, request, context):
+    def QA(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_MyServiceServicer_to_server(servicer, server):
+def add_AIServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'DoSomething': grpc.unary_unary_rpc_method_handler(
-                    servicer.DoSomething,
-                    request_deserializer=service__pb2.Request.FromString,
-                    response_serializer=service__pb2.Response.SerializeToString,
+            'QA': grpc.unary_stream_rpc_method_handler(
+                    servicer.QA,
+                    request_deserializer=service__pb2.Question.FromString,
+                    response_serializer=service__pb2.Answer.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'MyService', rpc_method_handlers)
+            'AIService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('MyService', rpc_method_handlers)
+    server.add_registered_method_handlers('AIService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class MyService(object):
+class AIService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def DoSomething(request,
+    def QA(request,
             target,
             options=(),
             channel_credentials=None,
@@ -80,12 +80,12 @@ class MyService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(
+        return grpc.experimental.unary_stream(
             request,
             target,
-            '/MyService/DoSomething',
-            service__pb2.Request.SerializeToString,
-            service__pb2.Response.FromString,
+            '/AIService/QA',
+            service__pb2.Question.SerializeToString,
+            service__pb2.Answer.FromString,
             options,
             channel_credentials,
             insecure,

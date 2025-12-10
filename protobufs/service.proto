@@ -1,13 +1,14 @@
 syntax = "proto3";
 
-service MyService {
-    rpc DoSomething (Request) returns (Response) {}
+service AIService {
+    rpc QA (Question) returns (stream Answer) {}
 }
 
-message Request {
-    string data = 1;
+message Question {
+    string question = 1;
 }
 
-message Response {
-    string result = 1;
+message Answer {
+    string answer = 1;
+    int32 sequence = 2;
 }
