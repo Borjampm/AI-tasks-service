@@ -1,6 +1,8 @@
-def main():
-    print("Hello from ai-tasks-service!")
+import logfire
+from ai_tasks.q_and_a import q_a_with_model
 
+logfire.configure()  
+logfire.instrument_pydantic_ai()
 
 if __name__ == "__main__":
-    main()
+    print(q_a_with_model("What is the capital of France?"))
