@@ -7,25 +7,35 @@ from pydantic_ai.providers.google import GoogleProvider
 
 import os
 from dotenv import load_dotenv
+import asyncio
+import logfire
+from typing import AsyncGenerator
 
-def q_a_with_model(question: str) -> str:
+
+logfire.configure()  
+logfire.instrument_pydantic_ai()
+
+load_dotenv()
+agent = Agent(GoogleModel('gemma-3-27b-it', provider=GoogleProvider(
+    client=Client(api_key=os.getenv('GOOGLE_API_KEY'))
+)))
+
+async def q_a_with_model(question: str) -> AsyncGenerator[str]:
     """
     Answer a question using the model.
     """
-    load_dotenv()
-    GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
-    model_options = ['gemma-3-27b-it']
+    async with agent.run_stream(question) as result:
+        async for text in result.stream_text(delta = True):
+            yield text
 
-    client = Client(
-        api_key=GOOGLE_API_KEY,
-    )
-    provider = GoogleProvider(client=client)
-    model = GoogleModel(model_options[0], provider=provider)
 
-    agent = Agent(
-        model
-        )
-    result = agent.run_sync(
-        question
-        )
-    return result.output
+
+
+if __name__ == "__main__":
+    question = "What is the capital of France?"
+    print(f"Question: {question}")
+    async def response():
+        async for text in q_a_with_model(question):
+            print(text, end="", flush=True)
+        print()
+    asyncio.run(response())

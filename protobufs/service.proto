@@ -10,5 +10,4 @@ message Question {
 
 message Answer {
     string answer = 1;
-    int32 sequence = 2;
 }
