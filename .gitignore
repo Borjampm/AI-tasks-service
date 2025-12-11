@@ -3,3 +3,8 @@ __pycache__/
 .env
 
 .logfire/
+
+.DS_Store
+
+# generated files
+ai_service_*
