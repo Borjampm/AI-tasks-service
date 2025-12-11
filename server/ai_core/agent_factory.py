@@ -30,10 +30,14 @@ class ProviderNotFoundError(Exception):
         self.model = model
         super().__init__(f"Provider for model {model} not found")
 
+
 class AgentFactory:
     def __init__(self):
         self._available_models: dict[str, list[str]] = {
-            'google': ['gemma-3-27b-it'],
+            'google': [
+                'gemma-3-27b-it',
+                'gemini-2.5-flash-lite',
+            ],
         }
         self._agents: dict[str, Agent] = {}
 
