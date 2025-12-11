@@ -9,7 +9,7 @@ class AIServiceServicer(ai_service_pb2_grpc.AIServiceServicer):
         async for text in q_a_with_model(request.question):
             yield ai_service_pb2.Answer(answer=text)
 
-async def serve():
+async def serve() -> None:
     server = grpc.aio.server()
     ai_service_pb2_grpc.add_AIServiceServicer_to_server(AIServiceServicer(), server)
     server.add_insecure_port("[::]:50051")

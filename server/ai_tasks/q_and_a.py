@@ -1,7 +1,7 @@
 from google.genai import Client
 
-from pydantic_ai import Agent, BinaryContent
-from pydantic_ai import Agent, RunContext
+from pydantic_ai import Agent
+from pydantic_ai import Agent
 from pydantic_ai.models.google import GoogleModel
 from pydantic_ai.providers.google import GoogleProvider
 
