@@ -7,6 +7,11 @@ import os
 from dotenv import load_dotenv
 from pydantic_ai.tools import AgentDepsT
 
+import logfire
+
+logfire.configure()  
+logfire.instrument_pydantic_ai()
+
 load_dotenv()
 
 class ModelDoesNotExistError(Exception):

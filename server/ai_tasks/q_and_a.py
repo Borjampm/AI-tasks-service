@@ -1,24 +1,11 @@
-from google.genai import Client
-
-from pydantic_ai import Agent
-from pydantic_ai import Agent
-from pydantic_ai.models.google import GoogleModel
-from pydantic_ai.providers.google import GoogleProvider
-
-import os
-from dotenv import load_dotenv
 import asyncio
 import logfire
 from typing import AsyncGenerator
 
+from ai_tasks.agent_factory import AgentFactory
 
-logfire.configure()  
-logfire.instrument_pydantic_ai()
-
-load_dotenv()
-agent = Agent(GoogleModel('gemma-3-27b-it', provider=GoogleProvider(
-    client=Client(api_key=os.getenv('GOOGLE_API_KEY'))
-)))
+agent_factory = AgentFactory()
+agent = agent_factory.get_agent('gemma-3-27b-it')
 
 async def q_a_with_model(question: str) -> AsyncGenerator[str]:
     """
