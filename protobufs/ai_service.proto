@@ -4,20 +4,12 @@ package ai_service;
 
 service AIService {
     rpc QA (Question) returns (stream Answer) {}
-    rpc GetAvailableModels (EmptyMessage) returns (ReturnAvailableModels) {}
 }
 
 message Question {
     string question = 1;
-    string model = 2;
 }
 
 message Answer {
     string answer = 1;
-}
-
-message EmptyMessage {}
-
-message ReturnAvailableModels {
-    repeated string models = 1;
 }

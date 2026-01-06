@@ -42,3 +42,21 @@ uv run main.py
 cd client
 uv run main.py
 ```
+
+## With docker:
+
+```bash 
+docker build -t ai-tasks-service .
+docker run -p 50051:50051 -e GOOGLE_API_KEY=your-key ai-tasks-service
+```
+
+# Cloud Run Deployment:
+
+```bash
+gcloud run deploy ai-tasks-service \
+  --source . \
+  --use-http2 \
+  --port 50051 \
+  --region=us-central1 \
+  --allow-unauthenticated
+```
