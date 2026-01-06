@@ -32,7 +32,8 @@ async def serve() -> None:
 
     port = os.environ.get("PORT", "50051")
     server.add_insecure_port(f"[::]:{port}")
-    
+    print(f"Server starting on port {port}")
+
     async def shutdown():
         print("Shutting down gracefully...")
         health_servicer.set("", health_pb2.HealthCheckResponse.NOT_SERVING)
