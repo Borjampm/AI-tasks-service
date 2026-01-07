@@ -30,6 +30,7 @@ static_resources:
                           route:
                             cluster: grpc_backend
                             timeout: 0s
+                            auto_host_rewrite: true
                 http_filters:
                   - name: envoy.filters.http.grpc_web
                     typed_config:
@@ -43,6 +44,7 @@ static_resources:
 
   clusters:
     - name: grpc_backend
+      connect_timeout: 5s
       type: LOGICAL_DNS
       lb_policy: ROUND_ROBIN
       dns_lookup_family: V4_ONLY
