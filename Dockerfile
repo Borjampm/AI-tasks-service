@@ -22,7 +22,7 @@ RUN .venv/bin/python -m grpc_tools.protoc \
     --python_out=./server \
     --pyi_out=./server \
     --grpc_python_out=./server \
-    ./protobufs/ai_service.proto
+    ./protobufs/chat_service.proto
 
 # Copy server code
 COPY server/ ./server/
