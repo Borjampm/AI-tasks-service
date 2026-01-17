@@ -1,10 +1,14 @@
 .venv/
 __pycache__/
 .env
+.claude/
 
 .logfire/
 
 .DS_Store
 
 # generated files
-ai_service_*
+*pb2*
+
+# temporary playground
+playground/
