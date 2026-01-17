@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chat_service;
+
+service ChatService {
+    rpc Chat (ChatRequest) returns (stream ChatResponse) {}
+}
+
+message ChatRequest {
+    string message = 1;
+    string session_id = 2;  // Optional: empty = new session
+}
+
+message ChatResponse {
+    string message = 1;
+    string session_id = 2;  // Echo back for client tracking
+}

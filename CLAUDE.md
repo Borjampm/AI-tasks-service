@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Run tests before and after making changes to code to review if anything was broken.
 - Do not write tests or documentation.
 - Never run production commands.
+- Search the README.md for relevant documentation.
 
 ## Project Overview
 

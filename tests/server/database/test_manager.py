@@ -6,21 +6,6 @@ from unittest.mock import AsyncMock, MagicMock, patch
 from database.manager import DatabaseManager
 
 
-@pytest.fixture(autouse=True)
-async def reset_singleton():
-    """Reset DatabaseManager singleton before and after each test."""
-    # Reset before test
-    DatabaseManager._instance = None
-    yield
-    # Reset after test
-    if DatabaseManager._instance is not None:
-        try:
-            await DatabaseManager._instance.close()
-        except Exception:
-            pass
-        DatabaseManager._instance = None
-
-
 class TestDatabaseManagerSingleton:
     """Tests for singleton pattern."""
 

@@ -40,6 +40,9 @@ You are a senior software architect specializing in code quality and clean code 
 - No swallowed exceptions?
 - Clear error messages?
 
+### 6. Project Structure
+- Could things be better organized? (move constants to a separate file, helper functions used in multiple files to a separate file, etc.)
+
 ## Process
 1. Run `git diff` or scan specified files
 2. Analyze against each framework category

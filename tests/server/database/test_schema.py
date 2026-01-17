@@ -1,25 +1,10 @@
 """Unit tests for SchemaDiscovery."""
 
 import pytest
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 from contextlib import asynccontextmanager
 
 from database.schema import SchemaDiscovery, TableInfo, ColumnInfo
-from database.manager import DatabaseManager
-
-
-@pytest.fixture
-def mock_db_manager():
-    """Create a mock DatabaseManager."""
-    manager = MagicMock(spec=DatabaseManager)
-    return manager
-
-
-@pytest.fixture
-def mock_connection():
-    """Create a mock database connection."""
-    conn = AsyncMock()
-    return conn
 
 
 @pytest.fixture
