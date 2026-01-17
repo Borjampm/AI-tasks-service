@@ -2,6 +2,7 @@ from grpc import aio
 import asyncio
 import os
 import signal
+import logfire
 
 from grpc_health.v1 import health_pb2, health_pb2_grpc
 from grpc_health.v1.health import HealthServicer
@@ -20,6 +21,9 @@ class AIServiceServicer(ai_service_pb2_grpc.AIServiceServicer):
 
 async def serve() -> None:
     setup_logging()
+    logfire.configure()
+    logfire.instrument_pydantic_ai()
+    
     server = aio.server(
         interceptors=[LoggingInterceptor()]
     )
