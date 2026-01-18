@@ -31,11 +31,19 @@ docker run -p 8080:8080 \
 
 ## Documentation
 
+### Guides
 | Guide | Description |
 |-------|-------------|
 | [Getting Started](docs/guides/getting-started.md) | Local development setup, protobuf generation, testing |
 | [Deployment](docs/guides/deployment.md) | Cloud Run deployment, troubleshooting, configuration |
-| [Database Module](docs/components/database.md) | DatabaseManager, QueryExecutor, SchemaDiscovery |
+
+### Components
+| Component | Description |
+|-----------|-------------|
+| [Server](docs/components/server.md) | gRPC server, session management, logging |
+| [AI Agents](docs/components/agents.md) | Chat agent configuration, Pydantic AI |
+| [Client](docs/components/client.md) | CLI client for testing |
+| [Database](docs/components/database.md) | DatabaseManager, QueryExecutor, SchemaDiscovery |
 
 ## Environment Variables
 
